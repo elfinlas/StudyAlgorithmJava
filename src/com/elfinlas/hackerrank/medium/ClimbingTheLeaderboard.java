@@ -1,8 +1,6 @@
 package com.elfinlas.hackerrank.medium;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
@@ -12,57 +10,38 @@ import java.util.Scanner;
 public class ClimbingTheLeaderboard {
     private static final Scanner scanner = new Scanner(System.in);
 
+    static int[] nonDuplicate(int[] arr) {
+        if (arr.length <= 1) return arr;
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(arr[0]);
+        for(int i=1; i<arr.length; i++) {
+            if (arr[i-1] == arr[i]) { continue; }
+            list.add(arr[i]);
+        }
+        int[] resultArr = new int[list.size()];
+        for (int i =0; i<list.size(); i++) {
+            resultArr[i] = list.get(i);
+        }
+        return resultArr;
+    }
+
     // Complete the climbingLeaderboard function below.
     static int[] climbingLeaderboard(int[] scores, int[] alice) {
-        int[] peopleRank = new int[scores.length];
-        int[] aliceRank = new int[alice.length];
+        int[] nonDuplicateArr = nonDuplicate(scores);
+        int[] resultArr = new int[alice.length]; //
 
-        peopleRank[0] = 1; //처음 값은 1등
-
-        //기존 점수의 스코어 배열을 정리한다.
-        for (int i=1; i<scores.length; i++) {
-            //전 값과 동일한 경우
-            if (scores[i-1] == scores[i]) { peopleRank[i] = peopleRank[i-1]; }
-            else {
-                //
-                if (peopleRank[i] == peopleRank[i-1]) { //만약 같은 등수라면
-
-                }
-                else {
-                    peopleRank[i] = peopleRank[i-1]++;
-                }
-            }//다음 값이 작은 경우
-        }
-
-        for(int score : peopleRank) {
-            System.out.println("score = " + score);
-        }
-
-        //엘리스의 스코어를 순회하면서 엘리스 점수 배열을 만든다.
-        for (int x=0; x<alice.length; x++) { //엘리스 순회
-            for (int y=0; y<scores.length; y++) { //스코어 순회
-
-                //만약 기존 스코어보다 큰 값인 경우
-                if (alice[x] >= scores[y]) {
-                    System.out.println("Find alice more big or eq  " );
-                    aliceRank[x] = peopleRank[y];
-                    break;
-                }
-                else if (alice[x] < scores[y]) { //엘리스가 기존 스코어보다 작은 값
-                    //두 스코어가 같지 않을 때만 증가
-                    if (aliceRank[x] != peopleRank[y]) {
-                        System.out.println("Find alice more low and not same score " );
-                        aliceRank[x] = peopleRank[y]++; }
-                }
+        for (int i=0; i<alice.length; i++) {
+            int aliceScore = 1;
+            for (int j=0; j<nonDuplicateArr.length; j++) {
+                //스코어가 엘리스보다 작은 경우
+                if (nonDuplicateArr[j] <= alice[i]) { break; }
+                else if (nonDuplicateArr[j] > alice[i]) { aliceScore++; }//스코어가 더 큰 경우
             }
-            System.out.println("~~Loop~~");
+            resultArr[i] = aliceScore;
+//            //출력
+//            System.out.println(aliceScore);
         }
-
-        for (int i =0; i<aliceRank.length; i++) {
-            System.out.println("alice = " + aliceRank[i]);
-        }
-
-        return null;
+        return resultArr;
     }
 
     public static void run() throws Exception {
@@ -114,5 +93,11 @@ public class ClimbingTheLeaderboard {
 }
 
 /*
+[문제 풀이]
+위 코드로는 완벽하게 안됨 -> Timeout 8번 쪽
+그래서 이 부분은 https://duzi077.tistory.com/159 이 부분을 참고해봐야 함
+
+
+
 
  */
