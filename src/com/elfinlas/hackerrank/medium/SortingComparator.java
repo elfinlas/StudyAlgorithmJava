@@ -13,19 +13,12 @@ public class SortingComparator {
 
     //해당 클래스 완성 시키기
     class Checker implements Comparator<Player> {
-        //https://gmlwjd9405.github.io/2018/09/06/java-comparable-and-comparator.html
+        //
         // complete this method
         public int compare(Player a, Player b) {
             if (a.score < b.score) { return 1; }
-            else if (a.score == b.score) { return 0; }
-            else { return -1; }//a > b
-
-//            if (a.score < b.score) { //점수에 대해서는 오름 차순
-//                //return (x < y) ? -1 : ((x == y) ? 0 : 1);
-//            }
-//            else { //A의 점수가 높거나 같은 경우
-//                return a.name.compareTo(b.name);
-//            }
+            else if (a.score > b.score) { return -1; }
+            else { return a.name.compareTo(b.name); } //서로 값이 상동한 경우
         }
     }
 
@@ -61,8 +54,11 @@ public class SortingComparator {
 
 /*
 [문제 해결]
-* 정렬에 대한 이해가 필요함
-- Compare
-- CompareTo 비교 찾기
+자바에서 Comparable 관 Comparator 에 대한 이해를 체크하는 유형
+문제는 결국 점수는 내림차순,  영문은 오름차순을 처리하는게 목표이다.
+compare의 경우 기본 정렬과는 다른 방향으로 구현함
+compareTo 의 경우 기본 정렬
 
+참고 사이트
+* https://gmlwjd9405.github.io/2018/09/06/java-comparable-and-comparator.html
  */
