@@ -2,11 +2,8 @@ package com.elfinlas;
 
 import com.elfinlas.codility.lessons.BinaryGap;
 import com.elfinlas.etc.CodilityType;
-import com.elfinlas.etc.ProgrammersType;
-import com.elfinlas.programmers.LevelOne;
 
 import static com.elfinlas.etc.CodilityType.*;
-import static com.elfinlas.etc.ProgrammersType.*;
 
 public class Main {
 
@@ -33,20 +30,6 @@ public class Main {
             BinaryGap.solutionBinaryGap(value);
         }
         else { System.out.println("No type code = "+ codilityType.name()); }
-    }
-
-    /**
-     * 프로그래머스 문제 수행 메서드
-     */
-    public static void runByProgrammers(ProgrammersType programmersType) {
-        if (programmersType.equals(LEVEL_ONE_1)) {
-            LevelOne.proExam01(12);
-        }
-        else {
-            LevelOne.proExam02(new int[]{5,9,7,10}, 5);
-            //proExam02(new int[]{3,2,6}, 10);
-        }
-
     }
 
 
