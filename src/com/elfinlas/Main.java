@@ -2,26 +2,27 @@ package com.elfinlas;
 
 import com.elfinlas.codility.lessons.BinaryGap;
 import com.elfinlas.etc.CodilityType;
-import com.elfinlas.hackerrank.easy.MarkAndToys;
-import com.elfinlas.hackerrank.easy.PlusMinus;
-import com.elfinlas.hackerrank.easy.Staircase;
-import com.elfinlas.hackerrank.medium.ClimbingTheLeaderboard;
-import com.elfinlas.hackerrank.medium.Pairs;
+import com.elfinlas.etc.ProgrammersType;
+import com.elfinlas.programmers.LevelOne;
 
 import static com.elfinlas.etc.CodilityType.*;
+import static com.elfinlas.etc.ProgrammersType.*;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        runByCodility(BINARY_GAP);
+        long start = System.currentTimeMillis(); //시작하는 시점 계산
 
-        //Staircase.run();
-        //PlusMinus.run();
-//        ClimbingTheLeaderboard.run();
-//        Pairs.run();
-        //MarkAndToys.run();
 
+        long end = System.currentTimeMillis(); //프로그램이 끝나는 시점 계산
+        System.out.println( "실행 시간 : " + ( end - start )/1000.0 +"초"); //실행 시간 계산 및 출력
     }
+
+
+    ///Programmers
+
+
+    ////////
 
     /**
      * 코딜리티 문제 수행 메서드
@@ -33,5 +34,20 @@ public class Main {
         }
         else { System.out.println("No type code = "+ codilityType.name()); }
     }
+
+    /**
+     * 프로그래머스 문제 수행 메서드
+     */
+    public static void runByProgrammers(ProgrammersType programmersType) {
+        if (programmersType.equals(LEVEL_ONE_1)) {
+            LevelOne.proExam01(12);
+        }
+        else {
+            LevelOne.proExam02(new int[]{5,9,7,10}, 5);
+            //proExam02(new int[]{3,2,6}, 10);
+        }
+
+    }
+
 
 }
