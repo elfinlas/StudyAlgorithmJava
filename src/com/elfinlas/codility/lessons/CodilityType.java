@@ -1,4 +1,4 @@
-package com.elfinlas.etc;
+package com.elfinlas.codility.lessons;
 
 /**
  * 코딜리티 문제 타입을 정의
